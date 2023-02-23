@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de datos relacionales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        table {
+  border: #b2b2b2 1px solid;
+}
+td, th {
+  border: black 1px solid;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Base de datos relacional</h1>
+    <h2>Conceptos Básicos:</h2>
+    <p>
+        En una base de datos relacional, una tabla es una colección de registros estructurados en filas y columnas que representan una entidad o relación específica, como por ejemplo clientes, productos o ventas. Cada columna de una tabla representa un atributo o campo de la entidad, mientras que cada fila representa un registro único con valores para cada campo. Los campos de una tabla tienen un tipo de dato específico que determina el tipo de información que se puede almacenar en ellos.
+
+    </p>
+    <img src="https://doc.4d.com/4Dv19/picture/105514/pict105514.es.png">
+
+    <dl>
+        <dt><b>Tabla</b></dt>
+        <dd>Es una colección de datos referentes al mismo  tema o asunto. Por ejemplo, la base de datos de una tienda online podría tener las siguientes tablas (Productos, Pedidos, Clientes, Envíos...)        </dd>
+    
+        <dt><b>Registro</b></dt>
+        <dd>Se refieren a los items presentes en de cada tabla. Es decir, cada registro se corresponde a cada una de las filas de dicha tabla.</dd>
+    
+        <dt><b>Campos</b></dt>
+        <dd>Aparece como una columna y contiene una categoría de información.</dd>
+    </dl>
+
+
+    <h3>Ejemplo:</h3>
+    <h4>Tabla: Vehículos</h4>
+    <table class="table">
+        <tr>
+            <td></td>
+            <td>Campo 1: MATRÍCULA</td>
+            <td>Campo 2: MODELO</td>
+            <td>Campo 3: KM</td>
+        </tr>
+        <tr>
+            <td>Registro 1</td>
+            <td>2345 HWK</td>
+            <td>SEAT</td>
+            <td>23.001</td>
+        </tr>
+        <tr>
+            <td>Registro 2</td>
+            <td>3939 MNR</td>
+            <td>TOYOTA</td>
+            <td>24.000</td>
+        </tr>
+        <tr>
+            <td>Registro 3</td>
+            <td>9090 PPH</td>
+            <td>RENAULT</td>
+            <td>12.103</td>
+        </tr>
+
+    </table>
+
+    <h2>Tipos de datos</h2>
+
+    <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Tamaño</th>
+            <th>Definición</th>
+            <th>Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>INTEGER</td>
+            <td>4 bytes</td>
+            <td>Un número entero que puede ser positivo, negativo o cero.</td>
+            <td>23</td>
+          </tr>
+          <tr>
+            <td>FLOAT</td>
+            <td>4 bytes</td>
+            <td>Un número decimal de precisión simple.</td>
+            <td>3.14</td>
+          </tr>
+          <tr>
+            <td>DOUBLE</td>
+            <td>8 bytes</td>
+            <td>Un número decimal de precisión doble.</td>
+            <td>3.14159265359</td>
+          </tr>
+          <tr>
+            <td>VARCHAR(n)</td>
+            <td>n bytes</td>
+            <td>Una cadena de caracteres de longitud variable con un máximo de n caracteres.</td>
+            <td>'Hola'</td>
+          </tr>
+          <tr>
+            <td>DATE</td>
+            <td>3 bytes</td>
+            <td>Una fecha en formato 'AAAA-MM-DD'.</td>
+            <td>'2022-01-31'</td>
+          </tr>
+          <tr>
+            <td>TIME</td>
+            <td>3 bytes</td>
+            <td>Una hora en formato 'HH:MM:SS'.</td>
+            <td>'14:30:00'</td>
+          </tr>
+          <tr>
+            <td>DATETIME</td>
+            <td>8 bytes</td>
+            <td>Una combinación de fecha y hora en formato 'AAAA-MM-DD HH:MM:SS'.</td>
+            <td>'2022-01-31 14:30:00'</td>
+          </tr>
+          <tr>
+            <td>BOOLEAN</td>
+            <td>1 byte</td>
+            <td>Un valor que puede ser verdadero o falso.</td>
+            <td>TRUE</td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</body>
+</html>
