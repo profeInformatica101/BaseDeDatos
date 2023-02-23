@@ -69,8 +69,27 @@ td, th {
     </table>
 
     <h2>Tipos de datos</h2>
-
-    <table>
+<p>
+    Los tipos de datos en una base de datos relacional son utilizados para definir el tipo de información que se almacenará en cada columna de una tabla. Cada sistema de gestión de bases de datos (DBMS) tiene su propia lista de tipos de datos disponibles, pero en general, los tipos de datos más comunes en las bases de datos relacionales incluyen:
+<ol>
+    <li>
+    Enteros: Los tipos de datos enteros se utilizan para almacenar valores numéricos enteros, como el número de un ID o la edad de una persona. Algunos ejemplos de tipos de datos enteros incluyen INTEGER, SMALLINT, BIGINT, TINYINT, etc.
+</li><li>
+    Decimales: Los tipos de datos decimales se utilizan para almacenar valores numéricos con decimales, como las cantidades de dinero o las coordenadas geográficas. Algunos ejemplos de tipos de datos decimales incluyen FLOAT, DOUBLE, DECIMAL, NUMERIC, etc.
+</li><li>
+    Cadenas de caracteres: Los tipos de datos de cadenas de caracteres se utilizan para almacenar texto, como nombres, direcciones o descripciones. Algunos ejemplos de tipos de datos de cadenas de caracteres incluyen CHAR, VARCHAR, TEXT, etc.
+</li><li>
+    Fechas y horas: Los tipos de datos de fechas y horas se utilizan para almacenar valores de fecha y hora, como fechas de nacimiento o tiempos de registro. Algunos ejemplos de tipos de datos de fechas y horas incluyen DATE, TIME, DATETIME, TIMESTAMP, etc.
+</li><li>
+    Booleanos: Los tipos de datos booleanos se utilizan para almacenar valores verdadero/falso o sí/no. Normalmente solo ocupan un bit de memoria.
+</li><li>
+    Binarios: Los tipos de datos binarios se utilizan para almacenar datos en formato binario, como imágenes, sonidos o archivos. Algunos ejemplos de tipos de datos binarios incluyen BLOB, VARBINARY, IMAGE, etc.
+</li><li>
+    Otros: Además de los tipos de datos mencionados anteriormente, también existen otros tipos de datos que se utilizan para almacenar valores específicos, como direcciones de correo electrónico o direcciones IP. Algunos ejemplos de estos tipos de datos son VARCHAR(max), NVARCHAR(max), XML, JSON, etc.
+</li>
+</ol>
+</p>
+    <table  class="table table-striped">
         <thead>
           <tr>
             <th>Tipo</th>
@@ -130,6 +149,10 @@ td, th {
           </tr>
         </tbody>
       </table>
+      <p>
+        En general, es importante elegir el tipo de datos correcto para cada columna de una tabla, ya que esto puede afectar el rendimiento y la eficiencia de la base de datos. Además, una buena elección de tipos de datos puede ayudar a asegurar la integridad de los datos y evitar errores o pérdida de información.
+
+      </p>
       
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
