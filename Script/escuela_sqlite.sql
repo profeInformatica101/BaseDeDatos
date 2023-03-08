@@ -1,102 +1,128 @@
--- Crear la tabla de cursos
-CREATE TABLE cursos (
-  id_curso INTEGER PRIMARY KEY,
-  nombre_curso TEXT,
-  descripcion_curso TEXT,
-  id_profesor INTEGER,
-  id_asignatura INTEGER,
-  FOREIGN KEY (id_profesor) REFERENCES profesores (id_profesor),
-  FOREIGN KEY (id_asignatura) REFERENCES asignaturas (id_asignatura)
+CREATE TABLE Profesor (
+    id_profesor INTEGER PRIMARY KEY,
+    nombre TEXT,
+    apellido TEXT
 );
 
--- Crear la tabla de profesores
-CREATE TABLE profesores (
-  id_profesor INTEGER PRIMARY KEY,
-  nombre_profesor TEXT,
-  apellido_profesor TEXT,
-  email_profesor TEXT
+CREATE TABLE Curso (
+    id_curso INTEGER PRIMARY KEY,
+    nombre_curso TEXT,
+    anio_escolar TEXT
 );
 
--- Crear la tabla de alumnos
-CREATE TABLE alumnos (
-  id_alumno INTEGER PRIMARY KEY,
-  nombre_alumno TEXT,
-  apellido_alumno TEXT,
-  email_alumno TEXT,
-  id_curso INTEGER,
-  FOREIGN KEY (id_curso) REFERENCES cursos (id_curso)
+CREATE TABLE Asignatura (
+    id_asignatura INTEGER PRIMARY KEY,
+    nombre_asignatura TEXT,
+    descripcion TEXT
 );
 
--- Crear la tabla de tutores
-CREATE TABLE tutores (
-  id_tutor INTEGER PRIMARY KEY,
-  nombre_tutor TEXT,
-  apellido_tutor TEXT,
-  email_tutor TEXT,
-  id_curso INTEGER,
-  FOREIGN KEY (id_curso) REFERENCES cursos (id_curso),
-  FOREIGN KEY (id_tutor) REFERENCES profesores (id_profesor)
+CREATE TABLE Imparte (
+    id_profesor INTEGER,
+    id_asignatura INTEGER,
+    id_curso INTEGER,
+    PRIMARY KEY (id_profesor, id_asignatura, id_curso),
+    FOREIGN KEY (id_profesor) REFERENCES Profesor(id_profesor),
+    FOREIGN KEY (id_asignatura) REFERENCES Asignatura(id_asignatura),
+    FOREIGN KEY (id_curso) REFERENCES Curso(id_curso)
 );
 
--- Crear la tabla de asignaturas
-CREATE TABLE asignaturas (
-  id_asignatura INTEGER PRIMARY KEY,
-  nombre_asignatura TEXT,
-  descripcion_asignatura TEXT
+CREATE TABLE Tutor (
+    id_curso INTEGER,
+    id_profesor INTEGER,
+    PRIMARY KEY (id_curso, id_profesor),
+    FOREIGN KEY (id_curso) REFERENCES Curso(id_curso),
+    FOREIGN KEY (id_profesor) REFERENCES Profesor(id_profesor)
 );
 
--- Crear la tabla de relación entre profesores y asignaturas
-CREATE TABLE profesores_asignaturas (
-  id_profesor INTEGER,
-  id_asignatura INTEGER,
-  PRIMARY KEY (id_profesor, id_asignatura),
-  FOREIGN KEY (id_profesor) REFERENCES profesores (id_profesor),
-  FOREIGN KEY (id_asignatura) REFERENCES asignaturas (id_asignatura)
+CREATE TABLE Alumno (
+    id_alumno INTEGER PRIMARY KEY,
+    nombre TEXT,
+    apellido TEXT,
+    email TEXT,
+    id_curso INTEGER,
+    FOREIGN KEY (id_curso) REFERENCES Curso(id_curso)
 );
 
+-- Datos de prueba para Curso
+INSERT INTO Curso (id_curso, nombre_curso, anio_escolar) VALUES
+(1, '2º ESO', '2022/2023'),
+(2, '3º ESO', '2022/2023'),
+(3, '1º Bachillerato', '2022/2023'),
+(4, '2º Bachillerato', '2022/2023');
 
--- Registros de prueba para la tabla de profesores
-INSERT INTO profesores (id_profesor, nombre_profesor, apellido_profesor, email_profesor) VALUES
-(1, 'Juan', 'Pérez', 'juan.perez@ejemplo.com'),
-(2, 'María', 'García', 'maria.garcia@ejemplo.com'),
-(3, 'Pedro', 'López', 'pedro.lopez@ejemplo.com');
+-- Datos de prueba para Asignatura
+INSERT INTO Asignatura (id_asignatura, nombre_asignatura, descripcion) VALUES
+(1, 'Informática', 'Introducción a la informática'),
+(2, 'Matemáticas', 'Álgebra y geometría'),
+(3, 'Lengua', 'Gramática y literatura'),
+(4, 'Inglés', 'Comprensión oral y escrita'),
+(5, 'Filosofía', 'Pensamiento crítico'),
+(6, 'Cocina', 'Elaboración de platos'),
+(7, 'Economía', 'Conceptos básicos de economía');
 
--- Registros de prueba para la tabla de asignaturas
-INSERT INTO asignaturas (id_asignatura, nombre_asignatura, descripcion_asignatura) VALUES
-(1, 'Matemáticas', 'Asignatura de matemáticas'),
-(2, 'Lengua', 'Asignatura de lengua'),
-(3, 'Ciencias Naturales', 'Asignatura de ciencias naturales'),
-(4, 'Historia', 'Asignatura de historia'),
-(5, 'Inglés', 'Asignatura de inglés');
+-- Datos de prueba para Profesor
+INSERT INTO Profesor (id_profesor, nombre, apellido) VALUES
+(1, 'Ada', 'Lovelace'),
+(2, 'Alan', 'Turing'),
+(3, 'Grace', 'Hopper'),
+(4, 'Claude', 'Shannon'),
+(5, 'Donald', 'Knuth'),
+(6, 'Barbara', 'Liskov'),
+(7, 'John', 'Backus'),
+(8, 'Tim', 'Berners-Lee');
 
--- Registros de prueba para la tabla de profesores_asignaturas
-INSERT INTO profesores_asignaturas (id_profesor, id_asignatura) VALUES
+-- Datos de prueba para Imparte
+INSERT INTO Imparte (id_profesor, id_asignatura, id_curso) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(1, 2, 2),
+(2, 1, 2),
+(3, 3, 2),
+(4, 5, 2),
+(5, 4, 2),
+(6, 6, 2),
+(7, 7, 2),
+(1, 1, 3),
+(2, 3, 3),
+(3, 2, 3),
+(4, 4, 3),
+(5, 5, 3),
+(6, 7, 3),
+(7, 6, 3),
+(1, 2, 4),
+(2, 1, 4),
+(3, 4, 4),
+(4, 3, 4),
+(5, 5, 4),
+(6, 6, 4),
+(7, 7, 4);
+
+-- Tutor
+INSERT INTO Tutor (id_curso, id_profesor) VALUES
 (1, 1),
-(1, 3),
 (2, 2),
-(2, 5),
 (3, 3),
-(3, 4),
-(3, 5);
+(4, 4);
 
--- Registros de prueba para la tabla de cursos
-INSERT INTO cursos (id_curso, nombre_curso, descripcion_curso, id_profesor, id_asignatura) VALUES
-(1, 'Primero de ESO', 'Curso de primer año de ESO', 1, 1),
-(2, 'Segundo de ESO', 'Curso de segundo año de ESO', 2, 2),
-(3, 'Tercero de ESO', 'Curso de tercer año de ESO', 3, 3),
-(4, 'Cuarto de ESO', 'Curso de cuarto año de ESO', 1, 5);
-
--- Registros de prueba para la tabla de alumnos
-INSERT INTO alumnos (id_alumno, nombre_alumno, apellido_alumno, email_alumno, id_curso) VALUES
-(1, 'Ana', 'Martínez', 'ana.martinez@ejemplo.com', 1),
-(2, 'Sara', 'García', 'sara.garcia@ejemplo.com', 1),
-(3, 'Carlos', 'Gómez', 'carlos.gomez@ejemplo.com', 2),
-(4, 'Marta', 'López', 'marta.lopez@ejemplo.com', 3),
-(5, 'David', 'González', 'david.gonzalez@ejemplo.com', 3),
-(6, 'Lucía', 'Pérez', 'lucia.perez@ejemplo.com', 4);
-
--- Registros de prueba para la tabla de tutores
-INSERT INTO tutores (id_tutor, nombre_tutor, apellido_tutor, email_tutor, id_curso) VALUES
-(1, 'Juan', 'Pérez', 'juan.perez@ejemplo.com', 1),
-(2, 'María', 'García', 'maria.garcia@ejemplo.com', 2),
-(3, 'Pedro', 'López', 'pedro.lopez@ejemplo.com', 3);
+INSERT INTO Alumno (nombre, apellido, email, id_curso) VALUES
+('Sara', 'Gutiérrez', 'sara@gmail.com', 1),
+('Pedro', 'Martínez', 'pedro@gmail.com', 1),
+('Lucía', 'Fernández', 'lucia@gmail.com', 1),
+('Sergio', 'López', 'sergio@gmail.com', 1),
+('María', 'García', 'maria@gmail.com', 2),
+('Javier', 'Ruiz', 'javier@gmail.com', 2),
+('Paula', 'Rodríguez', 'paula@gmail.com', 2),
+('David', 'González', 'david@gmail.com', 2),
+('Laura', 'Pérez', 'laura@gmail.com', 3),
+('Marcos', 'Fernández', 'marcos@gmail.com', 3),
+('Lucas', 'Gutiérrez', 'lucas@gmail.com', 3),
+('Isabel', 'López', 'isabel@gmail.com', 3),
+('Santiago', 'Martínez', 'santiago@gmail.com', 4),
+('Julia', 'Rodríguez', 'julia@gmail.com', 4),
+('Ana', 'García', 'ana@gmail.com', 4),
+('Manuel', 'González', 'manuel@gmail.com', 4);
