@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base de datos relacionales</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+    table {
+      border: #b2b2b2 1px solid;
+    }
+
+    td,
+    th {
+      border: black 1px solid;
+    }
+
+    .primaria {
+      background-color: yellow;
+    }
+
+    .foranea {
+      background-color: rgb(153, 231, 241);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Claves y relaciones.</h1>
+
+    <p>
+      En la gestión de bases de datos relacionales, existen diferentes tipos de relaciones que se pueden establecer
+      entre dos o más tablas. Los principales tipos de relaciones son los siguientes:
+    </p>
+    <ol>
+      <li>
+        <p><b>Relación uno a uno:</b> en este tipo de relación, un registro de una tabla se relaciona con un solo
+          registro de otra tabla. Por ejemplo, una tabla de profesores se puede relacionar con una tabla de cursos donde
+          un profesor solo puede ser tutor de un curso.</p>
+        <img src="https://sites.google.com/site/basededatosadsi/_/rsrc/1424117175804/to-dos/10.png" alt="1a1">
+      </li>
+      <li>
+        <p> <b> Relación uno a muchos:</b> en este tipo de relación, un registro de una tabla se relaciona con varios
+          registros de otra tabla. Por ejemplo, una tabla de alumnos se puede relacionar con una tabla de curso donde un
+          curso puede tener varios alumnos.
+        </p>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7tD2L5bgbKqllYO3RwE30KKvetZ9pUcCIgSVYJ7zpIDXx0rSE4BSiZG-DGHrFnbKE2xM&usqp=CAU"
+          alt="uno-a-muchos">
+      </li>
+      <li>
+        <p><b> Relación muchos a muchos:</b>en este tipo de relación, varios registros de una tabla se relacionan con
+          varios registros de otra tabla. Por ejemplo, una tabla de alumnos se puede relacionar con una tabla de
+          profesores donde varios alumnos pueden tener  varios profesres.
+        </p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTId_8wFIcXckn5XnFacQFRKFyxB8LAuFSJqhDYEk0Af9XdIZ8sL5e7XJ0nBkqqQ_1l8TM&usqp=CAU">
+        </li>
+     
+    </ol>
+
+    </ol>
+
+    <p>
+      La clave para establecer una relación adecuada entre dos tablas es la identificación de las <span
+        class="primaria">claves primarias</span> y <span class="foranea"> foráneas </span> correspondientes en cada
+      tabla. Esto permite establecer las restricciones de integridad referencial y garantiza la coherencia de los datos
+      entre las tablas relacionadas.
+    </p>
+
+    <h3>Base de datos 'Escuela'</h3>
+    <p>Las claves <span class="primaria">primarias</span> son:</p>
+<ul>
+    <li>Profesor: <strong>id_profesor</strong></li>
+    <li>Curso: <strong>id_curso</strong></li>
+    <li>Asignatura: <strong>id_asignatura</strong></li>
+    <li>Imparte: <strong>id_profesor</strong>, <strong>id_asignatura</strong>, <strong>id_curso</strong></li>
+    <li>Tutor: <strong>id_curso</strong>, <strong>id_profesor</strong></li>
+    <li>Alumno: <strong>id_alumno</strong></li>
+</ul>
+<p>Las claves <span class="foranea">foráneas</span> son:</p>
+<ul>
+    <li>Tutor: <strong>id_curso</strong> hace referencia a <em>Curso(id_curso)</em> e <strong>id_profesor</strong> hace referencia a <em>Profesor(id_profesor)</em></li>
+    <li>Alumno: <strong>id_curso</strong> hace referencia a <em>Curso(id_curso)</em></li>
+</ul>
+    <img src="imagenes/entidad-relacion.png" alt="entidad-relacion">
+
+    <a href="https://raw.githubusercontent.com/profeInformatica101/BaseDeDatos/main/Script/escuela_sqlite.sql">Descargar script SQL</a>
+
+
+    <h5>Ejemplo de relación 1 a 1:</h5>
+    <p>
+      En la tabla "Profesor", la columna "id_profesor" es la clave primaria y en la tabla "Tutor" la columna "id_profesor" es una clave foránea que hace referencia a la tabla "Profesor", lo que indica que un profesor puede tener como máximo un tutor asignado y un tutor solo puede ser asignado a un profesor.
+    </p>
+    <h5>
+      Ejemplo de relación 1 a muchos:
+    </h5>
+<p>En la tabla "Curso", la columna "id_curso" es la clave primaria y en la tabla "Tutor" la columna "id_curso" es una clave foránea que hace referencia a la tabla "Curso", lo que indica que un curso puede tener muchos tutores asignados, pero un tutor solo puede ser asignado a un curso.</p>
+<h5>Ejemplo de relación muchos a muchos:</h5>
+<p>
+  En la tabla "Imparte", la columna "id_profesor" y la columna "id_asignatura" son claves foráneas que hacen referencia a las tablas "Profesor" y "Asignatura", respectivamente, y la columna "id_curso" es una clave foránea que hace referencia a la tabla "Curso". Esto indica que muchos profesores pueden impartir muchas asignaturas en muchos cursos, y a su vez, un curso puede ser impartido por muchos profesores y tener muchas asignaturas.
+  </p>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
