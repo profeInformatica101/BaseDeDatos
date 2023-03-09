@@ -1,25 +1,25 @@
 CREATE TABLE Profesor (
-    id_profesor INT PRIMARY KEY,
-    nombre VARCHAR(50),
-    apellido VARCHAR(50)
+    id_profesor INTEGER PRIMARY KEY,
+    nombre TEXT,
+    apellido TEXT
 );
 
 CREATE TABLE Curso (
-    id_curso INT PRIMARY KEY,
-    nombre_curso VARCHAR(50),
-    año_escolar VARCHAR(50)
+    id_curso INTEGER PRIMARY KEY,
+    nombre_curso TEXT,
+    anio_escolar TEXT
 );
 
 CREATE TABLE Asignatura (
-    id_asignatura INT PRIMARY KEY,
-    nombre_asignatura VARCHAR(50),
-    descripcion VARCHAR(100)
+    id_asignatura INTEGER PRIMARY KEY,
+    nombre_asignatura TEXT,
+    descripcion TEXT
 );
 
 CREATE TABLE Imparte (
-    id_profesor INT,
-    id_asignatura INT,
-    id_curso INT,
+    id_profesor INTEGER,
+    id_asignatura INTEGER,
+    id_curso INTEGER,
     PRIMARY KEY (id_profesor, id_asignatura, id_curso),
     FOREIGN KEY (id_profesor) REFERENCES Profesor(id_profesor),
     FOREIGN KEY (id_asignatura) REFERENCES Asignatura(id_asignatura),
@@ -27,18 +27,19 @@ CREATE TABLE Imparte (
 );
 
 CREATE TABLE Tutor (
-    id_tutor INT PRIMARY KEY,
-    id_curso INT,
-    id_profesor INT,
+    id_curso INTEGER,
+    id_profesor INTEGER,
+    PRIMARY KEY (id_curso, id_profesor),
     FOREIGN KEY (id_curso) REFERENCES Curso(id_curso),
     FOREIGN KEY (id_profesor) REFERENCES Profesor(id_profesor)
 );
 
 CREATE TABLE Alumno (
-    id_alumno INT PRIMARY KEY,
-    nombre VARCHAR(50),
-    apellido VARCHAR(50),
-    email VARCHAR(50),
-    id_curso INT,
+    id_alumno INTEGER PRIMARY KEY,
+    nombre TEXT,
+    apellido TEXT,
+    email TEXT,
+    id_curso INTEGER,
     FOREIGN KEY (id_curso) REFERENCES Curso(id_curso)
 );
+
