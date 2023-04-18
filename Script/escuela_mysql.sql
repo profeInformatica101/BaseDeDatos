@@ -1,17 +1,17 @@
 CREATE TABLE Profesor (
-    id_profesor INTEGER PRIMARY KEY,
+    id_profesor INTEGER PRIMARY KEY AUTO_INCREMENT,
     nombre TEXT,
     apellido TEXT
 );
 
 CREATE TABLE Curso (
-    id_curso INTEGER PRIMARY KEY,
+    id_curso INTEGER PRIMARY KEY AUTO_INCREMENT,
     nombre_curso TEXT,
     anio_escolar TEXT
 );
 
 CREATE TABLE Asignatura (
-    id_asignatura INTEGER PRIMARY KEY,
+    id_asignatura INTEGER PRIMARY KEY AUTO_INCREMENT,
     nombre_asignatura TEXT,
     descripcion TEXT
 );
@@ -35,7 +35,7 @@ CREATE TABLE Tutor (
 );
 
 CREATE TABLE Alumno (
-    id_alumno INTEGER PRIMARY KEY,
+    id_alumno INTEGER PRIMARY KEY AUTO_INCREMENT,
     nombre TEXT,
     apellido TEXT,
     email TEXT,
